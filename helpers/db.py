@@ -56,3 +56,35 @@ class Database(object):
         """
         self.curr.close()
         self.conn.close()
+
+    def add_user(self, user_uuid, username, password):
+        """
+        Add a user to the database
+        :param user_uuid: The user's uuid
+        :param username: The user's username
+        :param password: The hashed password to store in the DB
+        :return: Nothing
+        """
+        query = """INSERT INTO users (user_uuid, username, hashed_password) VALUES (%s, %s, %s);"""
+        self.curr.execute(query, (user_uuid, username, password,))
+        self.conn.commit()
+
+    def get_user_by_uuid(self, user_uuid):
+        """
+        Gets a user data dict based on the uuid
+        :param user_uuid: The user's uuid to find
+        :return: The user data dict, or None
+        """
+        query = """SELECT * FROM users WHERE user_uuid=%s LIMIT 1;"""
+        self.curr.execute(query, (user_uuid,))
+        return self.curr.fetchone()
+
+    def get_user_by_username(self, username):
+        """
+        Gets a user data dict based on the username
+        :param username: The user's username to find
+        :return: The user data dict, or None
+        """
+        query = """SELECT * FROM users WHERE username=%s LIMIT 1;"""
+        self.curr.execute(query, (username,))
+        return self.curr.fetchone()
