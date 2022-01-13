@@ -45,7 +45,7 @@ class User(UserMixin):
 		"""
 		return self._user_data['username']
 
-	def user_uuid(self):
+	def get_id(self):
 		"""
 		Returns the uuid of this user
 		:return: The user's UUID
