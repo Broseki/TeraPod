@@ -7,7 +7,7 @@ control heat, humidity, and lighting; and will be able to follow schedules which
 ## TeraPod-OS
 Currently unreleased is the TeraPod-OS Linux distro.
 This is a Yocto based linux distro that runs on a Raspberry Pi. It connects to the TeraPod's sensors and relays
-information back to the master server. This will be released in the near future.
+information back to the master server.
 
 ## Disclaimer
 This project makes no claim as to its the safety, stability, or efficacy. This is highly experimental and should
